@@ -9,8 +9,9 @@ get_header();
 
 $theme_uri = get_template_directory_uri();
 
-$hero  = get_field( 'hero' );
-$about = get_field( 'about_section' );
+$hero      = get_field( 'hero' );
+$about     = get_field( 'about_section' );
+$execution = get_field( 'execution_model_section' );
 
 $hero_video  = ! empty( $hero['video'] ) ? $hero['video'] : $theme_uri . '/assets/Turnwell_Loop.mp4?2';
 $about_video = ! empty( $about['about_video'] ) ? $about['about_video'] : $theme_uri . '/assets/aboutvideo.mp4?2';
@@ -206,6 +207,67 @@ $about_video = ! empty( $about['about_video'] ) ? $about['about_video'] : $theme
         <div class="section-cta" data-aos="fade-up" data-aos-delay="100">
           <a href="<?php echo esc_url( home_url( '/our-team/' ) ); ?>" class="btn btn--pill">Meet our Leadership Team</a>
         </div>
+      </div>
+    </section>
+    <?php endif; ?>
+
+    <?php if ( ! empty( $execution ) ) : ?>
+    <!-- 4. Operations tile grid -->
+    <section class="execution section section--grey" id="execution-model"<?php echo ! empty( $execution['execution_heading'] ) ? ' aria-labelledby="execution-heading"' : ''; ?>>
+      <div class="container container-wide">
+        <?php if ( ! empty( $execution['execution_heading'] ) ) : ?>
+        <header class="execution-header" data-aos="fade-up">
+          <h2 id="execution-heading" class="section-title"><?php echo esc_html( $execution['execution_heading'] ); ?></h2>
+        </header>
+        <?php endif; ?>
+
+        <?php if ( ! empty( $execution['execution_pillars'] ) ) : ?>
+        <div class="execution-pillars" aria-label="Integrated execution model pillars">
+          <?php
+          $top_pillars    = array_slice( $execution['execution_pillars'], 0, 3 );
+          $bottom_pillars = array_slice( $execution['execution_pillars'], 3 );
+          ?>
+          <?php foreach ( $top_pillars as $index => $pillar ) : ?>
+            <?php if ( empty( $pillar['pillar_title'] ) && empty( $pillar['pillar_text'] ) ) : ?>
+              <?php continue; ?>
+            <?php endif; ?>
+            <?php $accent_class = 0 === $index % 2 ? 'execution-pillar--accent-blue' : 'execution-pillar--accent-yellow'; ?>
+          <article class="execution-pillar <?php echo esc_attr( $accent_class ); ?>" data-aos="fade-up">
+            <?php if ( ! empty( $pillar['pillar_title'] ) ) : ?>
+            <h3 class="execution-pillar__title"><?php echo esc_html( $pillar['pillar_title'] ); ?></h3>
+            <?php endif; ?>
+            <?php if ( ! empty( $pillar['pillar_text'] ) ) : ?>
+            <p class="execution-pillar__text"><?php echo esc_html( $pillar['pillar_text'] ); ?></p>
+            <?php endif; ?>
+          </article>
+          <?php endforeach; ?>
+
+          <?php if ( ! empty( $bottom_pillars ) ) : ?>
+          <div class="execution-pillars__row-two">
+            <?php foreach ( $bottom_pillars as $index => $pillar ) : ?>
+              <?php if ( empty( $pillar['pillar_title'] ) && empty( $pillar['pillar_text'] ) ) : ?>
+                <?php continue; ?>
+              <?php endif; ?>
+              <?php $accent_class = 0 === ( $index + 3 ) % 2 ? 'execution-pillar--accent-blue' : 'execution-pillar--accent-yellow'; ?>
+            <article class="execution-pillar <?php echo esc_attr( $accent_class ); ?>" data-aos="fade-up">
+              <?php if ( ! empty( $pillar['pillar_title'] ) ) : ?>
+              <h3 class="execution-pillar__title"><?php echo esc_html( $pillar['pillar_title'] ); ?></h3>
+              <?php endif; ?>
+              <?php if ( ! empty( $pillar['pillar_text'] ) ) : ?>
+              <p class="execution-pillar__text"><?php echo esc_html( $pillar['pillar_text'] ); ?></p>
+              <?php endif; ?>
+            </article>
+            <?php endforeach; ?>
+          </div>
+          <?php endif; ?>
+        </div>
+        <?php endif; ?>
+
+        <?php if ( ! empty( $execution['button_label'] ) && ! empty( $execution['button_url'] ) ) : ?>
+        <div class="section-cta" data-aos="fade-up">
+          <a href="<?php echo esc_url( $execution['button_url'] ); ?>" class="btn btn--pill"><?php echo esc_html( $execution['button_label'] ); ?></a>
+        </div>
+        <?php endif; ?>
       </div>
     </section>
     <?php endif; ?>
