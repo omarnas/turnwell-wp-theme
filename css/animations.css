@@ -1,0 +1,23 @@
+/* AOS — restrained scroll motion (index.html) */
+
+/* Card media clipping */
+.team-card-media,
+.execution-card-media,
+.tech-card-media,
+.home-about__media {
+  overflow: hidden;
+}
+
+/* Subtle zoom — reduced distance */
+[data-aos='zoom-in'] {
+  --aos-transform: translate3d(0, 0, 0) scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+}

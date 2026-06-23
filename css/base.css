@@ -1,0 +1,180 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--color-text);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-sm);
+  z-index: 1000;
+  padding: 0.75rem 1rem;
+  background: var(--color-electric-blue);
+  color: var(--color-white);
+  border-radius: var(--radius-sm);
+}
+
+.skip-link:focus {
+  top: var(--space-sm);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.container-wide {
+  width: 100%;
+  max-width: var(--container-wide-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: var(--container-narrow-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.section {
+  padding-block: var(--space-2xl);
+}
+
+/* Subtle alternate band — derived from brand light grey only */
+.section--grey {
+  background: var(--color-light-grey-22);
+}
+
+.execution.section--grey,
+.technology.section--grey {
+  background: var(--color-light-grey-22);
+}
+
+.section-title {
+  font-weight: var(--font-weight-bold);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: 0;
+  color: var(--color-navy);
+}
+
+
+/* Title → yellow rule → eyebrow → supporting copy */
+.about-header,
+.inner-section-header,
+.section-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-header .section-title,
+.inner-section-header .section-title,
+.section-header .section-title {
+  order: 1;
+}
+
+.about-header .section-eyebrow,
+.inner-section-header .section-eyebrow,
+.section-header .section-eyebrow {
+  order: 2;
+  margin-top: var(--space-sm);
+  margin-bottom: 0;
+}
+
+.about-header > :not(.section-title):not(.section-eyebrow),
+.inner-section-header > :not(.section-title):not(.section-eyebrow),
+.section-header > :not(.section-title):not(.section-eyebrow) {
+  order: 3;
+}
+
+.section-eyebrow {
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-electric-blue);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.section-cta {
+  margin-top: var(--space-xl);
+  text-align: center;
+}
+
+.prose p {
+  color: var(--color-navy);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.prose p + p {
+  margin-top: var(--space-md);
+}
+
+/* Shared corporate card — no decorative top/left borders */
+.surface-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-light-grey);
+  border-radius: var(--radius-md);
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+/* Pattern classes kept for markup; no decorative overlay */
+.section-pattern,
+.section-pattern-dark {
+  position: relative;
+}
+
+.section-pattern-dark {
+  background: var(--color-navy);
+}

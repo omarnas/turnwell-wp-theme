@@ -1,0 +1,11 @@
+.DS_Store
+node_modules/
+.vscode/
+.idea/
+html_php_template/
+*.log
+.env
+
+uploads/
+cache/
+.cursor/

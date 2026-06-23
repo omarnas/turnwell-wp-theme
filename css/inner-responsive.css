@@ -1,0 +1,162 @@
+/* Inner pages — responsive breakpoints */
+
+@media (max-width: 1200px) {
+  .media-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 992px) {
+  .member-profile__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .member-profile__portrait-card {
+    max-width: 360px;
+    margin-inline: auto;
+  }
+
+  .member-profile__body {
+    max-width: none;
+  }
+
+  .team-profile-grid--executive {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .team-profile-grid--leadership {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .content-grid--media-prominent {
+    grid-template-columns: 1fr;
+  }
+
+  .about-split {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .about-image {
+    height: auto;
+    aspect-ratio: 16 / 10;
+    max-height: 420px;
+  }
+
+  .about-split__body {
+    padding-left: calc(var(--space-md) + 5px);
+  }
+
+  .content-grid--reverse .content-grid__media {
+    order: -1;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .media-card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .team-profile-card--executive .team-profile-card__media {
+    height: 280px;
+    max-height: 280px;
+  }
+
+  .team-profile-grid--leadership .team-profile-card__media {
+    height: 260px;
+    max-height: 260px;
+  }
+
+  .page-hero {
+    min-height: clamp(16rem, 38vh, 22rem);
+  }
+
+  .page-hero--premium .page-hero__inner {
+    padding-bottom: clamp(1.75rem, 4vh, 2.5rem);
+  }
+
+  .breadcrumb {
+    margin-bottom: var(--space-md);
+  }
+
+  .image-block--featured {
+    min-height: clamp(18rem, 52vw, 24rem);
+  }
+
+  .fullwidth-image--immersive .image-block--ratio-cinematic,
+  .fullwidth-image--immersive .image-block--ratio-cinematic img {
+    min-height: clamp(16rem, 45vh, 26rem);
+  }
+
+  .statement-section {
+    padding-block: var(--space-xl);
+  }
+
+  .page-inner .section--spacious {
+    padding-block: var(--space-2xl);
+  }
+
+  .inner-cta {
+    padding-block: var(--space-xl);
+  }
+
+  .media-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .member-profile__portrait-card {
+    max-width: min(100%, 20rem);
+    margin-inline: auto;
+  }
+
+  .team-profile-grid--executive,
+  .team-profile-grid--leadership {
+    grid-template-columns: 1fr;
+  }
+
+  .inner-section-header,
+  .inner-section-header--center {
+    margin-bottom: var(--space-lg);
+  }
+
+  .content-grid__body--accent {
+    padding-left: calc(var(--space-sm) + 6px);
+  }
+
+  .about-split__body {
+    padding-left: calc(var(--space-sm) + 5px);
+  }
+
+  .about-split__prose {
+    max-width: none;
+  }
+}
+
+@media (min-width: 1440px) {
+  .page-hero__content {
+    max-width: 44rem;
+  }
+
+  .page-hero--premium .page-hero__content {
+    max-width: 50rem;
+  }
+
+  .content-grid--media-prominent {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  }
+
+}

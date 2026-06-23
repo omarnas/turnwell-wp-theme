@@ -1,0 +1,116 @@
+(function () {
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = document.querySelector('.primary-nav');
+  var header = document.querySelector('.site-header');
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (toggle && nav) {
+    function setOpen(open) {
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      nav.classList.toggle('is-open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+
+    toggle.addEventListener('click', function () {
+      setOpen(!nav.classList.contains('is-open'));
+    });
+
+    nav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (window.matchMedia('(max-width: 768px)').matches) {
+          setOpen(false);
+        }
+      });
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.matchMedia('(min-width: 769px)').matches) {
+        setOpen(false);
+      }
+    });
+  }
+
+  if (header) {
+    function updateHeaderScroll() {
+      header.classList.toggle('is-scrolled', window.scrollY > 8);
+    }
+    updateHeaderScroll();
+    window.addEventListener('scroll', updateHeaderScroll, { passive: true });
+  }
+
+  /* AOS — index.html */
+  if (typeof AOS !== 'undefined' && document.querySelector('[data-aos]')) {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 80,
+      mirror: false,
+      disable: prefersReducedMotion
+    });
+
+    window.addEventListener('load', function () {
+      AOS.refresh();
+    });
+    return;
+  }
+
+  /* Scroll reveal — indexv2.html and fallback */
+  var revealEls = document.querySelectorAll('.reveal, .reveal-child, .reveal-image-wrap');
+  if (!revealEls.length) {
+    return;
+  }
+
+  document.documentElement.classList.add('js-reveal-ready');
+
+  var hero = document.querySelector('.hero--fullbleed');
+
+  function showReveals() {
+    revealEls.forEach(function (el) {
+      el.classList.add('is-visible');
+    });
+  }
+
+  if (prefersReducedMotion) {
+    showReveals();
+    return;
+  }
+
+  if (hero) {
+    hero.classList.add('is-visible');
+    hero.querySelectorAll('.reveal-image-wrap, .reveal-image').forEach(function (el) {
+      el.classList.add('is-visible');
+    });
+  }
+
+  document.querySelectorAll('.team-grid, .execution-grid, .partners-grid, .technology-grid').forEach(function (grid) {
+    grid.querySelectorAll('.reveal-child').forEach(function (el, i) {
+      el.style.transitionDelay = (i % 8) * 0.07 + 's';
+    });
+  });
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { root: null, rootMargin: '0px 0px -6% 0px', threshold: 0.1 }
+    );
+
+    revealEls.forEach(function (el) {
+      if (hero && hero.contains(el)) {
+        return;
+      }
+      observer.observe(el);
+    });
+  } else {
+    showReveals();
+  }
+})();
+

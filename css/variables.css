@@ -1,0 +1,51 @@
+:root {
+  --color-electric-blue: #2145FF;
+  --color-navy: #071D49;
+  --color-secondary-blue: #485CC7;
+  --color-light-grey: #D9DBE3;
+  --color-yellow: #FFC629;
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+
+  /* Derived from #D9DBE3 only — no extra greys */
+  --color-light-grey-15: rgba(217, 219, 227, 0.15);
+  --color-light-grey-22: rgba(217, 219, 227, 0.22);
+  --color-light-grey-35: rgba(217, 219, 227, 0.35);
+  --color-navy-08: rgba(7, 29, 73, 0.08);
+
+  --color-bg: var(--color-white);
+  --color-text: var(--color-navy);
+  --color-text-supporting: var(--color-secondary-blue);
+  --color-border: var(--color-light-grey);
+
+  --font-family: 'nekstweb', Arial, sans-serif;
+  --font-weight-thin: 100;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  --container-max: 1280px;
+  --container-padding: clamp(1.25rem, 4vw, 3rem);
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 5.5rem;
+  --space-3xl: 7rem;
+  --space-xxl: var(--space-3xl);
+
+  --inner-first-section-top: clamp(3.75rem, 9vw, 6rem);
+  --inner-hero-height: 60vh;
+
+  --container-wide-max: 1440px;
+  --container-narrow-max: 720px;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-pill: 999px;
+
+  --header-height: 5rem;
+  --transition: 0.2s ease;
+}
