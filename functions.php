@@ -11,7 +11,7 @@ function turnwell_assets() {
             'turnwell-main',
             $theme_uri . '/css/main.css',
             [],
-            filemtime($theme_dir . '/css/main.css')
+            filemtime( $theme_dir . '/css/main.css' )
         );
 
     } else {
@@ -20,20 +20,22 @@ function turnwell_assets() {
             'turnwell-inner',
             $theme_uri . '/css/main-inner.css',
             [],
-            filemtime($theme_dir . '/css/main-inner.css')
+            filemtime( $theme_dir . '/css/main-inner.css' )
         );
 
     }
 
 }
-add_action('wp_enqueue_scripts', 'turnwell_assets');
+add_action( 'wp_enqueue_scripts', 'turnwell_assets' );
 
-add_theme_support('title-tag');
-add_theme_support('post-thumbnails');
+add_theme_support( 'title-tag' );
+add_theme_support( 'post-thumbnails' );
 
-register_nav_menus([
-    'primary' => 'Primary Menu',
-]);
+register_nav_menus(
+    [
+        'primary' => 'Primary Menu',
+    ]
+);
 
 /**
  * Resolve the active primary nav item from the current page.
@@ -62,3 +64,19 @@ function turnwell_resolve_active_nav() {
 
     return '';
 }
+
+add_filter(
+    'acf/settings/save_json',
+    function () {
+        return get_stylesheet_directory() . '/acf-json';
+    }
+);
+
+add_filter(
+    'acf/settings/load_json',
+    function ( $paths ) {
+        $paths[] = get_stylesheet_directory() . '/acf-json';
+
+        return $paths;
+    }
+);
