@@ -11,7 +11,9 @@ $theme_uri = get_template_directory_uri();
 
 $hero      = get_field( 'hero' );
 $about     = get_field( 'about_section' );
-$execution = get_field( 'execution_model_section' );
+$execution  = get_field( 'execution_model_section' );
+$partners   = get_field( 'our_partners' );
+$technology = get_field( 'technology_grid' );
 
 $hero_video  = ! empty( $hero['video'] ) ? $hero['video'] : $theme_uri . '/assets/Turnwell_Loop.mp4?2';
 $about_video = ! empty( $about['about_video'] ) ? $about['about_video'] : $theme_uri . '/assets/aboutvideo.mp4?2';
@@ -266,6 +268,116 @@ $about_video = ! empty( $about['about_video'] ) ? $about['about_video'] : $theme
         <?php if ( ! empty( $execution['button_label'] ) && ! empty( $execution['button_url'] ) ) : ?>
         <div class="section-cta" data-aos="fade-up">
           <a href="<?php echo esc_url( $execution['button_url'] ); ?>" class="btn btn--pill"><?php echo esc_html( $execution['button_label'] ); ?></a>
+        </div>
+        <?php endif; ?>
+      </div>
+    </section>
+    <?php endif; ?>
+
+    <?php if ( ! empty( $partners ) ) : ?>
+    <!-- 5. Our Partners -->
+    <section class="partners section section--grey" id="partners" aria-labelledby="partners-heading">
+      <div class="container">
+        <header class="section-header" data-aos="fade-up">
+          <h2 id="partners-heading" class="section-title">Our Partners</h2>
+        </header>
+
+        <div class="partners-grid">
+          <?php foreach ( $partners as $index => $partner ) : ?>
+            <?php
+            if (
+                empty( $partner['partner_name'] )
+                && empty( $partner['partner_logo'] )
+                && empty( $partner['partner_copy'] )
+                && empty( $partner['partner_link'] )
+            ) {
+                continue;
+            }
+
+            $accent_class = 0 === $index % 2 ? 'partner-card--accent-blue' : 'partner-card--accent-yellow';
+            ?>
+          <article class="partner-card <?php echo esc_attr( $accent_class ); ?>" data-aos="fade-up" data-aos-delay="<?php echo esc_attr( $index * 150 ); ?>">
+            <?php if ( ! empty( $partner['partner_logo'] ) ) : ?>
+            <div class="partner-logo-wrap">
+              <img
+                src="<?php echo esc_url( $partner['partner_logo'] ); ?>"
+                alt="<?php echo esc_attr( $partner['partner_name'] ?? '' ); ?>"
+                class="partner-logo"
+                width="200"
+                height="52"
+              >
+            </div>
+            <?php endif; ?>
+
+            <?php if ( ! empty( $partner['partner_copy'] ) ) : ?>
+            <div class="partner-copy prose">
+              <p><?php echo esc_html( $partner['partner_copy'] ); ?></p>
+            </div>
+            <?php endif; ?>
+
+            <?php if ( ! empty( $partner['partner_link'] ) ) : ?>
+            <a href="<?php echo esc_url( $partner['partner_link'] ); ?>" target="_blank" rel="noopener noreferrer" class="partner-link">Visit the website</a>
+            <?php endif; ?>
+          </article>
+          <?php endforeach; ?>
+        </div>
+      </div>
+    </section>
+    <?php endif; ?>
+
+    <?php if ( ! empty( $technology ) ) : ?>
+    <!-- 6. Technology Spotlights -->
+    <section class="technology section section--grey" id="technology"<?php echo ! empty( $technology['technology_heading'] ) ? ' aria-labelledby="technology-heading"' : ''; ?>>
+      <div class="container">
+        <?php if ( ! empty( $technology['technology_heading'] ) ) : ?>
+        <header class="technology-header" data-aos="fade-up">
+          <h2 id="technology-heading" class="section-title"><?php echo esc_html( $technology['technology_heading'] ); ?></h2>
+        </header>
+        <?php endif; ?>
+
+        <?php if ( ! empty( $technology['technology_cards'] ) ) : ?>
+        <div class="technology-grid">
+          <?php foreach ( $technology['technology_cards'] as $index => $card ) : ?>
+            <?php
+            if (
+                empty( $card['card_image'] )
+                && empty( $card['card_title'] )
+                && empty( $card['card_product'] )
+            ) {
+                continue;
+            }
+            ?>
+          <article class="tech-card" data-aos="fade-up" data-aos-delay="<?php echo esc_attr( $index * 100 ); ?>">
+            <?php if ( ! empty( $card['card_image'] ) ) : ?>
+            <div class="tech-card-media">
+              <img
+                src="<?php echo esc_url( $card['card_image'] ); ?>"
+                alt=""
+                class="tech-card-image"
+                width="600"
+                height="400"
+              >
+            </div>
+            <?php endif; ?>
+
+            <?php if ( ! empty( $card['card_title'] ) || ! empty( $card['card_product'] ) ) : ?>
+            <div class="tech-card-body">
+              <?php if ( ! empty( $card['card_title'] ) ) : ?>
+              <h3 class="tech-card-title"><?php echo esc_html( $card['card_title'] ); ?></h3>
+              <?php endif; ?>
+              <?php if ( ! empty( $card['card_product'] ) ) : ?>
+              <p class="tech-card-product"><?php echo esc_html( $card['card_product'] ); ?></p>
+              <?php endif; ?>
+            </div>
+            <?php endif; ?>
+          </article>
+          <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
+
+        <?php if ( ! empty( $technology['button_label'] ) && ! empty( $technology['button_url'] ) ) : ?>
+        <div class="section-cta" data-aos="fade-up">
+          <a href="<?php echo esc_url( $technology['button_url'] ); ?>" class="btn btn--pill"><?php echo esc_html( $technology['button_label'] ); ?></a>
         </div>
         <?php endif; ?>
       </div>
