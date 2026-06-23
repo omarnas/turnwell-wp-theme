@@ -116,6 +116,9 @@ body.team-modal-open {
   display: block;
   width: 100%;
   height: auto;
+  aspect-ratio: 420 / 520;
+  object-fit: cover;
+  contain-intrinsic-size: auto;
 }
 
 .team-modal__portrait .team-modal__linkedin {

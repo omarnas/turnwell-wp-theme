@@ -148,7 +148,88 @@ $about_video = ! empty( $about['about_video'] ) ? $about['about_video'] : $theme
     </section>
     <?php endif; ?>
 
+    <?php
+    $homepage_team = turnwell_get_executive_management_members();
+
+    if ( ! empty( $homepage_team ) ) :
+    ?>
+    <!-- 3. Leadership Team -->
+    <section class="team section" id="leadership-team" aria-labelledby="team-heading">
+      <div class="container">
+        <header class="section-header" data-aos="fade-up">
+          <h2 id="team-heading" class="section-title">Leadership Team</h2>
+        </header>
+
+        <div class="team-grid">
+          <?php foreach ( $homepage_team as $index => $member ) : ?>
+            <?php
+            $slug     = $member->post_name;
+            $name     = get_the_title( $member );
+            $position = get_field( 'position', $member->ID );
+            ?>
+          <article
+            class="team-card team-card--interactive"
+            data-aos="fade-up"
+            data-aos-delay="<?php echo esc_attr( $index * 100 ); ?>"
+            data-team-modal="<?php echo esc_attr( $slug ); ?>"
+            role="button"
+            tabindex="0"
+            aria-haspopup="dialog"
+            aria-controls="team-member-modal"
+            aria-label="<?php echo esc_attr( sprintf( 'Read bio for %s', $name ) ); ?>"
+          >
+            <div class="team-card-media">
+              <?php
+              echo get_the_post_thumbnail(
+                  $member,
+                  'full',
+                  [
+                      'alt'     => '',
+                      'width'   => 400,
+                      'height'  => 500,
+                      'loading' => 'lazy',
+                  ]
+              );
+              ?>
+              <span class="team-card-hint" aria-hidden="true">
+                <span class="team-card-hint__text">Read bio</span>
+              </span>
+            </div>
+            <h3 class="team-card-name"><?php echo esc_html( $name ); ?></h3>
+            <?php if ( ! empty( $position ) ) : ?>
+            <p class="team-card-role"><?php echo esc_html( $position ); ?></p>
+            <?php endif; ?>
+          </article>
+          <?php endforeach; ?>
+        </div>
+
+        <div class="section-cta" data-aos="fade-up" data-aos-delay="100">
+          <a href="<?php echo esc_url( home_url( '/our-team/' ) ); ?>" class="btn btn--pill">Meet our Leadership Team</a>
+        </div>
+      </div>
+    </section>
+    <?php endif; ?>
+
   </main>
 
 <?php
+if ( ! empty( $homepage_team ) ) {
+    get_template_part(
+        'template-parts/team-member',
+        'modal',
+        [
+            'members' => $homepage_team,
+        ]
+    );
+
+    add_filter(
+        'turnwell_footer_scripts',
+        static function ( $scripts ) {
+            $scripts[] = 'js/team-modal.js?v=1.3';
+
+            return $scripts;
+        }
+    );
+}
+
 get_footer();
