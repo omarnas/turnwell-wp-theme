@@ -4,6 +4,8 @@ require get_template_directory() . '/inc/post-types.php';
 require get_template_directory() . '/inc/post-types/team-members.php';
 
 
+
+
 function turnwell_assets() {
 
     $theme_uri = get_template_directory_uri();
@@ -48,8 +50,9 @@ register_nav_menus(
  */
 function turnwell_resolve_active_nav() {
     $slug_map = [
-        'our-team'        => 'team',
-        'execution-model' => 'execution',
+        'our-team'            => 'team',
+        'execution-model'     => 'execution',
+        'our-execution-model' => 'execution',
         'our-services'    => 'services',
         'our-technology'  => 'technology',
         'news'            => 'news',
