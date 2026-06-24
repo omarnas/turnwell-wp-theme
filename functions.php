@@ -1,5 +1,6 @@
 <?php
 
+require get_template_directory() . '/inc/post-types.php';
 require get_template_directory() . '/inc/post-types/team-members.php';
 
 
