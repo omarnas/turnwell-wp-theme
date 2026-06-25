@@ -223,9 +223,13 @@
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.35fr repeat(3, 1fr);
+  grid-template-columns: 1.35fr repeat(var(--footer-nav-cols, 3), minmax(0, 1fr));
   gap: var(--space-xl);
   padding-bottom: var(--space-xl);
+}
+
+.footer-grid--brand-only {
+  grid-template-columns: 1fr;
 }
 
 .footer-logo-link {

@@ -3,6 +3,7 @@
 require get_template_directory() . '/inc/post-types.php';
 require get_template_directory() . '/inc/post-types/team-members.php';
 require get_template_directory() . '/inc/nav-menu.php';
+require get_template_directory() . '/inc/footer-menu.php';
 
 
 function turnwell_assets() {
@@ -39,6 +40,7 @@ add_theme_support( 'post-thumbnails' );
 register_nav_menus(
     [
         'primary' => 'Primary Menu',
+        'footer'  => 'Footer Menu',
     ]
 );
 

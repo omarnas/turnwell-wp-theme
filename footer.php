@@ -7,53 +7,51 @@
 
 $theme_uri = get_template_directory_uri();
 
+$footer_logo_url    = get_field( 'footer_logo', 'option' );
+$footer_tagline     = get_field( 'footer_tagline', 'option' );
+$linkedin_url       = get_field( 'linkedin_url', 'option' );
+$footer_columns     = turnwell_get_footer_menu_columns();
+$footer_col_count   = count( $footer_columns );
+$footer_grid_class  = 'container footer-grid';
+$footer_grid_style  = '';
+
+if ( $footer_col_count > 0 ) {
+	$footer_grid_style = sprintf( '--footer-nav-cols: %d;', $footer_col_count );
+} else {
+	$footer_grid_class .= ' footer-grid--brand-only';
+}
+
+if ( empty( $footer_logo_url ) ) {
+	$footer_logo_url = $theme_uri . '/assets/images/logos/turnwelllogo-white.svg';
+}
+
 $footer_scripts = apply_filters( 'turnwell_footer_scripts', [] );
 ?>
   <footer class="site-footer" id="contact">
-    <div class="container footer-grid">
+    <div class="<?php echo esc_attr( $footer_grid_class ); ?>"<?php echo $footer_grid_style ? ' style="' . esc_attr( $footer_grid_style ) . '"' : ''; ?>>
       <div class="footer-brand">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="footer-logo-link" aria-label="Turnwell home">
-          <img src="<?php echo esc_url( $theme_uri . '/assets/images/logos/turnwelllogo-white.svg' ); ?>" alt="Turnwell" width="180" height="32" class="footer-logo">
+          <img src="<?php echo esc_url( $footer_logo_url ); ?>" alt="Turnwell" width="180" height="32" class="footer-logo">
         </a>
-        <p class="footer-tagline">Advanced Technologies Delivering Unparalleled Efficiency</p>
+        <?php if ( $footer_tagline ) : ?>
+        <p class="footer-tagline"><?php echo esc_html( $footer_tagline ); ?></p>
+        <?php endif; ?>
+        <?php if ( $linkedin_url ) : ?>
         <div class="footer-social" aria-label="Social media">
-
-          <a href="https://www.linkedin.com/company/turnwell/?viewAsMember=true" class="footer-social-link" aria-label="Linkedin" target="_blank">in</a>
+          <a href="<?php echo esc_url( $linkedin_url ); ?>" class="footer-social-link" aria-label="Linkedin" target="_blank" rel="noopener noreferrer">in</a>
         </div>
+        <?php endif; ?>
       </div>
 
-      <nav class="footer-col" aria-label="Company">
-        <h3 class="footer-col-title">Company</h3>
-        <ul class="footer-links">
-          <li><a href="<?php echo esc_url( home_url( '/about/' ) ); ?>">About Turnwell</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/our-team/' ) ); ?>">Leadership Team</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/news/' ) ); ?>">News &amp; Media</a></li>
-        </ul>
-      </nav>
-
-      <nav class="footer-col" aria-label="Operations">
-        <h3 class="footer-col-title">Operations</h3>
-        <ul class="footer-links">
-          <li><a href="<?php echo esc_url( home_url( '/execution-model/' ) ); ?>">Execution Model</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/our-services/' ) ); ?>">Services</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/our-technology/' ) ); ?>">Technology</a></li>
-        </ul>
-      </nav>
-
-      <nav class="footer-col" aria-label="Contact">
-        <h3 class="footer-col-title">Contact</h3>
-        <ul class="footer-links">
-          <li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact Us</a></li>
-        </ul>
-      </nav>
+      <?php turnwell_render_footer_menu(); ?>
     </div>
 
     <div class="footer-bottom">
       <div class="container footer-bottom-inner">
         <p class="footer-copyright">&copy; <?php echo esc_html( date( 'Y' ) ); ?> Turnwell Industries LLC OPC. All rights reserved.</p>
         <div class="footer-legal">
-          <a href="#">Privacy &amp; Policy</a>
-          <a href="#">Terms &amp; Condition</a>
+          <a href="<?php the_field('privacy_policy_link', 'option'); ?>">Privacy &amp; Policy</a>
+          <!--<a href="#">Terms &amp; Condition</a>-->
         </div>
       </div>
     </div>
