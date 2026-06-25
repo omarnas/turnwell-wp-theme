@@ -3,6 +3,7 @@
 require get_template_directory() . '/inc/post-types.php';
 require get_template_directory() . '/inc/post-types/team-members.php';
 
+
 function turnwell_assets() {
 
     $theme_uri = get_template_directory_uri();
@@ -64,6 +65,10 @@ function turnwell_resolve_active_nav() {
         $slug = get_post_field( 'post_name', get_queried_object_id() );
 
         return isset( $slug_map[ $slug ] ) ? $slug_map[ $slug ] : '';
+    }
+
+    if ( is_single() && has_category( 'news' ) ) {
+        return 'news';
     }
 
     return '';
