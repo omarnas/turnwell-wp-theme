@@ -8,16 +8,6 @@
 $theme_uri = get_template_directory_uri();
 
 $page_description = apply_filters( 'turnwell_page_description', 'Turnwell Industries' );
-
-$active_nav = apply_filters( 'turnwell_active_nav', turnwell_resolve_active_nav() );
-
-$nav_home      = $active_nav === 'home' ? ' is-active' : '';
-$nav_team      = $active_nav === 'team' ? ' is-active' : '';
-$nav_execution = $active_nav === 'execution' ? ' is-active' : '';
-$nav_services  = $active_nav === 'services' ? ' is-active' : '';
-$nav_technology = $active_nav === 'technology' ? ' is-active' : '';
-$nav_news      = $active_nav === 'news' ? ' is-active' : '';
-$nav_contact   = $active_nav === 'contact' ? ' is-active' : '';
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -49,16 +39,17 @@ $nav_contact   = $active_nav === 'contact' ? ' is-active' : '';
       </button>
 
       <nav class="primary-nav" id="primary-nav" aria-label="Primary">
-        <ul class="nav-list">
-          <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav-link<?php echo esc_attr( $nav_home ); ?>">Home</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/our-team/' ) ); ?>" class="nav-link<?php echo esc_attr( $nav_team ); ?>">Our Team</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/execution-model/' ) ); ?>" class="nav-link<?php echo esc_attr( $nav_execution ); ?>">Our Execution Model</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/our-services/' ) ); ?>" class="nav-link<?php echo esc_attr( $nav_services ); ?>">Our Services</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/our-technology/' ) ); ?>" class="nav-link<?php echo esc_attr( $nav_technology ); ?>">Our Technology</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/news/' ) ); ?>" class="nav-link<?php echo esc_attr( $nav_news ); ?>">News &amp; Media</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="nav-link<?php echo esc_attr( $nav_contact ); ?>">Contact</a></li>
-        </ul>
-
+        <?php
+        wp_nav_menu(
+            [
+                'theme_location' => 'primary',
+                'container'      => false,
+                'menu_class'     => 'nav-list',
+                'fallback_cb'    => 'turnwell_primary_menu_fallback',
+                'depth'          => 1,
+            ]
+        );
+        ?>
       </nav>
     </div>
   </header>

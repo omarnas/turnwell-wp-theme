@@ -200,46 +200,11 @@ get_header();
             <?php endif; ?>
 
             <div class="contact-experience__form" id="contact-form">
-              <form class="contact-form" action="#" method="post" novalidate>
-                <div class="contact-form__field">
-                  <label class="contact-form__label" for="contact-name">Full Name *</label>
-                  <input class="contact-form__input" type="text" id="contact-name" name="name" required autocomplete="name">
-                </div>
-
-                <div class="contact-form__field">
-                  <label class="contact-form__label" for="contact-organization">Organization *</label>
-                  <input class="contact-form__input" type="text" id="contact-organization" name="organization" required autocomplete="organization">
-                </div>
-
-                <div class="contact-form__field">
-                  <label class="contact-form__label" for="contact-email">Email *</label>
-                  <input class="contact-form__input" type="email" id="contact-email" name="email" required autocomplete="email">
-                </div>
-
-                <div class="contact-form__field">
-                  <label class="contact-form__label" for="contact-phone">Phone</label>
-                  <input class="contact-form__input" type="tel" id="contact-phone" name="phone" autocomplete="tel">
-                </div>
-
-                <div class="contact-form__field">
-                  <label class="contact-form__label" for="contact-inquiry">Inquiry Type *</label>
-                  <select class="contact-form__select" id="contact-inquiry" name="inquiry_type" required>
-                    <option value="" selected disabled>Select inquiry type</option>
-                    <?php foreach ( $inquiry_types as $value => $label ) : ?>
-                    <option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
-                    <?php endforeach; ?>
-                  </select>
-                </div>
-
-                <div class="contact-form__field">
-                  <label class="contact-form__label" for="contact-message">Message *</label>
-                  <textarea class="contact-form__textarea" id="contact-message" name="message" rows="6" required></textarea>
-                </div>
-
-                <div class="contact-form__actions">
-                  <button type="submit" class="btn btn--pill contact-form__submit">Submit</button>
-                </div>
-              </form>
+              <?php
+              if ( function_exists( 'turnwell_contact_form' ) ) {
+                  turnwell_contact_form( $inquiry_types );
+              }
+              ?>
             </div>
           </div>
         </div>
