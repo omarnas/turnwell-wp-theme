@@ -55,6 +55,7 @@ function turnwell_resolve_active_nav() {
         'our-technology'  => 'technology',
         'news'            => 'news',
         'contact'         => 'contact',
+        'contact-us'      => 'contact',
     ];
 
     if ( is_front_page() ) {
