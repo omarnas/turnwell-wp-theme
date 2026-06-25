@@ -3,8 +3,6 @@
 require get_template_directory() . '/inc/post-types.php';
 require get_template_directory() . '/inc/post-types/team-members.php';
 
-
-
 function turnwell_assets() {
 
     $theme_uri = get_template_directory_uri();
