@@ -29,6 +29,7 @@ $map_embed     = get_field( 'map_embed' );
 $map_link      = get_field( 'map_link' );
 $quick_cards   = get_field( 'cards' );
 $phone         = get_field( 'phone' );
+$email         = get_field( 'email' );
 
 $office_lines = [];
 
@@ -89,7 +90,7 @@ get_header();
           <?php endif; ?>
         </header>
 
-        <?php if ( ! empty( $quick_cards ) ) : ?>
+        <?php if ( ! empty( $quick_cards ) && 1==2) : ?>
         <div class="contact-main__block contact-main__block--quick" data-aos="fade-up" data-aos-delay="60">
           <div class="contact-quick" role="list">
             <?php foreach ( $quick_cards as $index => $card ) : ?>
@@ -176,14 +177,22 @@ get_header();
                   </div>
                   <?php endif; ?>
 
-                  <?php if ( ! empty( $phone ) || ! empty( $map_link ) ) : ?>
+   
                   <div class="contact-panel__channels" aria-label="Contact channels">
+                         <?php if ( ! empty( $email ) ) : ?>
+                    <div class="contact-panel__channel">
+                      <span class="contact-panel__channel-label">Email</span>
+                      <p class="contact-panel__channel-value"><?php echo esc_html( $email ); ?></p>
+                    </div>
+                    <?php endif; ?>
                     <?php if ( ! empty( $phone ) ) : ?>
                     <div class="contact-panel__channel">
                       <span class="contact-panel__channel-label">Telephone</span>
                       <p class="contact-panel__channel-value"><?php echo esc_html( $phone ); ?></p>
                     </div>
                     <?php endif; ?>
+               
+                  
                     <?php if ( ! empty( $map_link ) ) : ?>
                     <a
                       class="contact-panel__map-link"
@@ -193,7 +202,7 @@ get_header();
                     >Open in Google Maps</a>
                     <?php endif; ?>
                   </div>
-                  <?php endif; ?>
+                 
                 </div>
               </article>
             </aside>

@@ -12,12 +12,24 @@ if ( ! have_posts() ) {
 the_post();
 
 if ( ! has_category( 'news' ) ) {
+    add_filter(
+        'turnwell_body_class',
+        static function () {
+            return 'page-inner';
+        }
+    );
+
+    add_filter(
+        'turnwell_page_description',
+        static function () {
+            $excerpt = get_the_excerpt();
+
+            return $excerpt ? $excerpt : 'Turnwell Industries';
+        }
+    );
+
     get_header();
-    ?>
-  <main id="main">
-    <?php the_content(); ?>
-  </main>
-    <?php
+    get_template_part( 'template-parts/inner', 'page' );
     get_footer();
     return;
 }
