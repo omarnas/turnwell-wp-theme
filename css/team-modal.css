@@ -212,6 +212,12 @@ body.team-modal-open {
     margin-inline: auto;
   }
 
+  .team-modal__portrait-card img {
+    aspect-ratio: auto;
+    object-fit: contain;
+    object-position: center top;
+  }
+
   .team-modal__content {
     max-height: none;
   }

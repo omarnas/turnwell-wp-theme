@@ -166,7 +166,7 @@
 
 .home-about__statement {
   margin: 0;
-  max-width: 52rem;
+  max-width: 63rem;
   font-size: clamp(1.5rem, 3.2vw, 2.125rem);
   font-weight: var(--font-weight-bold);
   line-height: 1.35;

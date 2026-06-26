@@ -70,8 +70,14 @@
 
 @media (max-width: 768px) {
   .team-profile-card--executive .team-profile-card__media {
-    height: 280px;
-    max-height: 280px;
+    height: auto;
+    max-height: none;
+  }
+
+  .team-profile-card--executive .team-profile-card__media img {
+    height: auto;
+    object-fit: contain;
+    object-position: center center;
   }
 
   .team-profile-grid--leadership .team-profile-card__media {
