@@ -43,14 +43,6 @@
   .execution-pillars {
     grid-template-columns: 1fr;
   }
-
-  .execution-pillars__row-two {
-    grid-template-columns: 1fr;
-  }
-
-  .execution-pillars__row-two > .execution-pillar:nth-child(n) {
-    grid-column: 1 / -1;
-  }
 }
 
 @media (max-width: 768px) {

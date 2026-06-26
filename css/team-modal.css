@@ -116,9 +116,8 @@ body.team-modal-open {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 420 / 520;
-  object-fit: cover;
-  contain-intrinsic-size: auto;
+  object-fit: contain;
+  object-position: center top;
 }
 
 .team-modal__portrait .team-modal__linkedin {
@@ -168,18 +167,18 @@ body.team-modal-open {
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--color-electric-blue);
+  color:#0a66c2;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .team-modal__linkedin-link:hover,
 .team-modal__linkedin-link:focus-visible {
-  color: var(--color-electric-blue);
+  color: #0a66c2;
 }
 
 .team-modal__linkedin-link:focus-visible {
-  outline: 2px solid var(--color-electric-blue);
+  outline: 2px solid #0a66c2;
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -210,12 +209,6 @@ body.team-modal-open {
   .team-modal__portrait {
     max-width: 14rem;
     margin-inline: auto;
-  }
-
-  .team-modal__portrait-card img {
-    aspect-ratio: auto;
-    object-fit: contain;
-    object-position: center top;
   }
 
   .team-modal__content {

@@ -223,13 +223,15 @@ $about_video = ! empty( $about['about_video'] ) ? $about['about_video'] : $theme
         </header>
         <?php endif; ?>
 
-        <?php if ( ! empty( $execution['execution_pillars'] ) ) : ?>
+        <?php
+        $execution_cta_label = $execution['button_label'] ?? '';
+        $execution_cta_url   = $execution['button_url'] ?? '';
+        $has_execution_cta   = ! empty( $execution_cta_label ) && ! empty( $execution_cta_url );
+        ?>
+
+        <?php if ( ! empty( $execution['execution_pillars'] ) || $has_execution_cta ) : ?>
         <div class="execution-pillars" aria-label="Integrated execution model pillars">
-          <?php
-          $top_pillars    = array_slice( $execution['execution_pillars'], 0, 3 );
-          $bottom_pillars = array_slice( $execution['execution_pillars'], 3 );
-          ?>
-          <?php foreach ( $top_pillars as $index => $pillar ) : ?>
+          <?php foreach ( $execution['execution_pillars'] ?? [] as $index => $pillar ) : ?>
             <?php if ( empty( $pillar['pillar_title'] ) && empty( $pillar['pillar_text'] ) ) : ?>
               <?php continue; ?>
             <?php endif; ?>
@@ -244,30 +246,24 @@ $about_video = ! empty( $about['about_video'] ) ? $about['about_video'] : $theme
           </article>
           <?php endforeach; ?>
 
-          <?php if ( ! empty( $bottom_pillars ) ) : ?>
-          <div class="execution-pillars__row-two">
-            <?php foreach ( $bottom_pillars as $index => $pillar ) : ?>
-              <?php if ( empty( $pillar['pillar_title'] ) && empty( $pillar['pillar_text'] ) ) : ?>
-                <?php continue; ?>
-              <?php endif; ?>
-              <?php $accent_class = 0 === ( $index + 3 ) % 2 ? 'execution-pillar--accent-blue' : 'execution-pillar--accent-yellow'; ?>
-            <article class="execution-pillar <?php echo esc_attr( $accent_class ); ?>" data-aos="fade-up">
-              <?php if ( ! empty( $pillar['pillar_title'] ) ) : ?>
-              <h3 class="execution-pillar__title"><?php echo esc_html( $pillar['pillar_title'] ); ?></h3>
-              <?php endif; ?>
-              <?php if ( ! empty( $pillar['pillar_text'] ) ) : ?>
-              <p class="execution-pillar__text"><?php echo esc_html( $pillar['pillar_text'] ); ?></p>
-              <?php endif; ?>
-            </article>
-            <?php endforeach; ?>
-          </div>
+          <?php if ( $has_execution_cta ) : ?>
+          <article class="execution-pillar execution-pillar--cta" data-aos="fade-up">
+            <div class="execution-pillar-cta">
+              <img
+                src="<?php echo esc_url( $theme_uri . '/assets/images/execution-mid-fullbanner-small.jpg' ); ?>"
+                alt=""
+                class="execution-pillar-cta__image"
+                width="640"
+                height="400"
+                loading="lazy"
+              >
+              <div class="execution-pillar-cta__overlay" aria-hidden="true"></div>
+              <div class="execution-pillar-cta__content">
+                <a href="<?php echo esc_url( $execution_cta_url ); ?>" class="btn btn--pill"><?php echo esc_html( $execution_cta_label ); ?></a>
+              </div>
+            </div>
+          </article>
           <?php endif; ?>
-        </div>
-        <?php endif; ?>
-
-        <?php if ( ! empty( $execution['button_label'] ) && ! empty( $execution['button_url'] ) ) : ?>
-        <div class="section-cta" data-aos="fade-up">
-          <a href="<?php echo esc_url( $execution['button_url'] ); ?>" class="btn btn--pill"><?php echo esc_html( $execution['button_label'] ); ?></a>
         </div>
         <?php endif; ?>
       </div>
