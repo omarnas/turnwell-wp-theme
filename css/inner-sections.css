@@ -58,6 +58,14 @@
   object-position: center;
 }
 
+@media (min-width: 993px) {
+  .page-inner:not(.page-team) .page-hero__bg-image {
+    object-position: top;
+    box-sizing: border-box;
+    padding-top: 100px;
+  }
+}
+
 .page-hero__overlay {
   position: absolute;
   inset: 0;

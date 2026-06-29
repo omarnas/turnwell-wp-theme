@@ -82,7 +82,7 @@ get_header();
     <?php if ( ! empty( $header_intro ) || ! empty( $quick_cards ) || ! empty( $office_title ) || ! empty( $office_lines ) || ! empty( $map_embed ) ) : ?>
     <section class="contact-main section section--spacious" aria-labelledby="contact-main-heading">
       <div class="contact-main__backdrop" aria-hidden="true"></div>
-      <div class="container container-wide contact-main__inner">
+      <div class="container contact-main__inner">
         <header class="inner-section-header inner-section-header--center" data-aos="fade-up">
           <h2 id="contact-main-heading" class="section-title type-section-title">Get in Touch</h2>
           <?php if ( ! empty( $header_intro ) ) : ?>

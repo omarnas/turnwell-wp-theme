@@ -10,6 +10,7 @@ function turnwell_assets() {
 
     $theme_uri = get_template_directory_uri();
     $theme_dir = get_template_directory();
+    $version   = wp_get_theme()->get( 'Version' ) ?: '1.0';
 
     if ( is_front_page() ) {
 
@@ -17,7 +18,7 @@ function turnwell_assets() {
             'turnwell-main',
             $theme_uri . '/css/main.css',
             [],
-            filemtime( $theme_dir . '/css/main.css' )
+            $version . '.' . filemtime( $theme_dir . '/css/main.css' )
         );
 
     } else {
@@ -26,7 +27,7 @@ function turnwell_assets() {
             'turnwell-inner',
             $theme_uri . '/css/main-inner.css',
             [],
-            filemtime( $theme_dir . '/css/main-inner.css' )
+            $version . '.' . filemtime( $theme_dir . '/css/main-inner.css' )
         );
 
     }

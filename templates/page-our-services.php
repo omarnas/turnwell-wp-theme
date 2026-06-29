@@ -204,7 +204,7 @@ get_header();
 
     <?php if ( ! empty( $operational_tempo_cards ) || ( ! empty( $button_label ) && ! empty( $button_url ) ) ) : ?>
     <section class="services-framework section section--grey section--spacious">
-      <div class="container container-wide">
+      <div class="container">
         <?php if ( ! empty( $operational_tempo_cards ) ) : ?>
         <div class="services-framework__grid">
           <?php foreach ( $operational_tempo_cards as $index => $card ) : ?>

@@ -47,14 +47,14 @@ get_header();
     <section class="tech-fmap section section--grey"<?php echo ! empty( $intro_heading ) ? ' aria-labelledby="tech-intro-heading"' : ''; ?>>
       <?php if ( ! empty( $intro_heading ) ) : ?>
       <div class="container">
-        <header class="inner-section-header inner-section-header--center tech-fmap__header" data-aos="fade-up">
+        <header class="inner-section-header tech-fmap__header" data-aos="fade-up">
           <h2 id="tech-intro-heading" class="section-title type-section-title"><?php echo esc_html( $intro_heading ); ?></h2>
         </header>
       </div>
       <?php endif; ?>
 
       <?php if ( ! empty( $technology_areas ) ) : ?>
-      <div class="container container-wide">
+      <div class="container">
         <div class="tech-fmap__grid">
           <?php foreach ( $technology_areas as $index => $area ) : ?>
             <?php
@@ -106,7 +106,7 @@ get_header();
 
     <?php if ( ! empty( $technology_areas ) || ( ! empty( $button_label ) && ! empty( $button_link ) ) ) : ?>
     <section class="tech-showcase section"<?php echo ! empty( $intro_heading ) ? ' aria-labelledby="tech-intro-heading"' : ''; ?>>
-      <div class="container container-wide">
+      <div class="container">
         <?php foreach ( $technology_areas as $area_index => $area ) : ?>
           <?php
           $area_title    = trim( (string) ( $area['title'] ?? '' ) );

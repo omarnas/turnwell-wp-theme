@@ -26,7 +26,7 @@ $featured_image = get_the_post_thumbnail_url( get_the_ID(), 'full' );
     </section>
 
     <section class="section section--spacious" aria-labelledby="page-content-heading">
-      <div class="container container-wide">
+      <div class="container">
         <h2 id="page-content-heading" class="visually-hidden"><?php the_title(); ?></h2>
         <div class="prose type-body" data-aos="fade-up" data-aos-delay="80">
           <?php the_content(); ?>

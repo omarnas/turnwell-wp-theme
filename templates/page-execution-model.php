@@ -49,9 +49,9 @@ get_header();
     <?php if ( ! empty( $phases ) || ! empty( $intro_title ) || ! empty( $intro_lead ) || ! empty( $intro_subtitle ) || ! empty( $technology_disclaimer ) ) : ?>
     <!-- Integrated well delivery — sticky scroll -->
     <section class="execution-ops section section--spacious"<?php echo ! empty( $intro_title ) ? ' aria-labelledby="execution-page-title"' : ''; ?>>
-      <div class="container container-wide">
+      <div class="container">
         <?php if ( ! empty( $intro_title ) || ! empty( $intro_lead ) || ! empty( $intro_subtitle ) ) : ?>
-        <header class="execution-ops__intro inner-section-header inner-section-header--center" data-aos="fade-up">
+        <header class="execution-ops__intro inner-section-header" data-aos="fade-up">
           <?php if ( ! empty( $intro_title ) ) : ?>
           <h2 id="execution-page-title" class="section-title type-section-title"><?php echo esc_html( $intro_title ); ?></h2>
           <?php endif; ?>

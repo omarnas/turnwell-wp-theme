@@ -9,7 +9,6 @@
 
 .page-execution .execution-ops__intro {
   max-width: 52rem;
-  margin-inline: auto;
   margin-bottom: 0;
 }
 
@@ -19,7 +18,6 @@
 
 .page-execution .execution-ops__intro .section-lead {
   max-width: 47.5rem;
-  margin-inline: auto;
   margin-top: 0;
   margin-bottom: clamp(2rem, 4vw, 2.75rem);
   font-size: 1.0625rem;

@@ -92,7 +92,7 @@ get_header();
     </section>
 
     <section class="news-article section" aria-labelledby="article-content-heading">
-      <div class="container container-wide">
+      <div class="container">
         <h2 id="article-content-heading" class="visually-hidden">Article</h2>
         <div class="news-article__layout">
           <div class="news-article__main">
@@ -119,7 +119,7 @@ get_header();
 
           <?php if ( ! empty( $related_posts ) ) : ?>
           <aside class="news-article__sidebar" aria-labelledby="news-related-heading" data-aos="fade-up" data-aos-delay="120">
-            <h2 id="news-related-heading" class="news-article__sidebar-title">Related Articles</h2>
+            <h2 id="news-related-heading" class="news-article__sidebar-title">News & Insights</h2>
             <div class="news-article__related-list">
               <?php foreach ( $related_posts as $post ) : ?>
                 <?php

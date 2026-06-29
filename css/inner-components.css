@@ -418,6 +418,12 @@
   padding-top: 0;
 }
 
+/* Align hero titles and section content to the same container width */
+.page-inner .page-hero > .container,
+.page-inner .container-wide {
+  max-width: var(--container-max);
+}
+
 .page-inner .section--spacious {
   padding-block: clamp(var(--space-2xl), 8vw, calc(var(--space-3xl) + 1rem));
 }

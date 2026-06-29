@@ -56,7 +56,7 @@ get_header();
     </section>
 
     <section class="news-room section" aria-label="News articles">
-      <div class="container container-wide">
+      <div class="container">
         <?php if ( $featured instanceof WP_Post ) : ?>
           <?php
           $featured_permalink = get_permalink( $featured );
