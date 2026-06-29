@@ -425,7 +425,7 @@
 .team-profile-card__link:hover .team-profile-card__hint,
 .team-profile-card__link:focus-visible .team-profile-card__hint,
 .team-profile-card--interactive:hover .team-profile-card__hint,
-.team-profile-card--interactive:focus-visible .team-profile-card__hint {
+.team-profile-card--interactive:has(.team-profile-card__trigger:focus-visible) .team-profile-card__hint {
   opacity: 1;
 }
 
@@ -458,7 +458,7 @@
 .team-profile-card__link:hover .team-profile-card__hint-text,
 .team-profile-card__link:focus-visible .team-profile-card__hint-text,
 .team-profile-card--interactive:hover .team-profile-card__hint-text,
-.team-profile-card--interactive:focus-visible .team-profile-card__hint-text {
+.team-profile-card--interactive:has(.team-profile-card__trigger:focus-visible) .team-profile-card__hint-text {
   transform: translate3d(0, 0, 0);
 }
 
@@ -526,11 +526,37 @@
 }
 
 .team-profile-card--interactive {
+  position: relative;
   cursor: pointer;
 }
 
-.team-profile-card__link:focus-visible,
-.team-profile-card--interactive:focus-visible {
+.team-profile-card__trigger {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: var(--radius-md);
+}
+
+.team-profile-card__trigger:focus-visible {
+  outline: 2px solid var(--color-electric-blue);
+  outline-offset: 4px;
+}
+
+.team-profile-card--interactive .team-profile-card__social {
+  position: relative;
+  z-index: 2;
+}
+
+.team-profile-card__link:focus-visible {
   outline: 2px solid var(--color-electric-blue);
   outline-offset: 4px;
   border-radius: var(--radius-md);

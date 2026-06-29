@@ -1,8 +1,4 @@
-@import url('fonts.css?v=0.2');
-@import url('variables.css?v=0.4');
-@import url('base.css?v=0.4');
-@import url('components.css?v=0.3');
-@import url('sections.css?v=3.3');
-@import url('animations.css?v=0.3');
-@import url('responsive.css?v=1.1');
-@import url('team-modal.css?v=1.6');
+/**
+ * Legacy import bundle — styles are enqueued via inc/assets.php.
+ * Kept for reference only; not loaded on the front end.
+ */

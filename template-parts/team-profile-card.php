@@ -34,15 +34,17 @@ if ( $executive ) :
             class="team-profile-card<?php echo $clickable ? ' team-profile-card--interactive' : ''; ?><?php echo esc_attr( $card_class ); ?>"
             data-aos="fade-up"
             data-aos-delay="<?php echo esc_attr( $delay ); ?>"
-            <?php if ( $clickable ) : ?>
-            data-team-modal="<?php echo esc_attr( $slug ); ?>"
-            role="button"
-            tabindex="0"
-            aria-haspopup="dialog"
-            aria-controls="team-member-modal"
-            aria-label="<?php echo esc_attr( sprintf( 'Read bio for %s', $name ) ); ?>"
-            <?php endif; ?>
           >
+            <?php if ( $clickable ) : ?>
+            <button
+              type="button"
+              class="team-profile-card__trigger"
+              data-team-modal="<?php echo esc_attr( $slug ); ?>"
+              aria-haspopup="dialog"
+              aria-controls="team-member-modal"
+              aria-label="<?php echo esc_attr( sprintf( 'Read bio for %s', $name ) ); ?>"
+            ></button>
+            <?php endif; ?>
             <div class="team-profile-card__media">
               <?php
               echo get_the_post_thumbnail(

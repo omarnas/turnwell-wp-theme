@@ -4,36 +4,8 @@ require get_template_directory() . '/inc/post-types.php';
 require get_template_directory() . '/inc/post-types/team-members.php';
 require get_template_directory() . '/inc/nav-menu.php';
 require get_template_directory() . '/inc/footer-menu.php';
+require get_template_directory() . '/inc/assets.php';
 
-
-function turnwell_assets() {
-
-    $theme_uri = get_template_directory_uri();
-    $theme_dir = get_template_directory();
-    $version   = wp_get_theme()->get( 'Version' ) ?: '1.0';
-
-    if ( is_front_page() ) {
-
-        wp_enqueue_style(
-            'turnwell-main',
-            $theme_uri . '/css/main.css',
-            [],
-            $version . '.' . filemtime( $theme_dir . '/css/main.css' )
-        );
-
-    } else {
-
-        wp_enqueue_style(
-            'turnwell-inner',
-            $theme_uri . '/css/main-inner.css',
-            [],
-            $version . '.' . filemtime( $theme_dir . '/css/main-inner.css' )
-        );
-
-    }
-
-}
-add_action( 'wp_enqueue_scripts', 'turnwell_assets' );
 
 add_theme_support( 'title-tag' );
 add_theme_support( 'post-thumbnails' );

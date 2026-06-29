@@ -24,8 +24,6 @@ if ( $footer_col_count > 0 ) {
 if ( empty( $footer_logo_url ) ) {
 	$footer_logo_url = $theme_uri . '/assets/images/logos/turnwelllogo-white.svg';
 }
-
-$footer_scripts = apply_filters( 'turnwell_footer_scripts', [] );
 ?>
   <footer class="site-footer" id="contact">
     <div class="<?php echo esc_attr( $footer_grid_class ); ?>"<?php echo $footer_grid_style ? ' style="' . esc_attr( $footer_grid_style ) . '"' : ''; ?>>
@@ -57,14 +55,6 @@ $footer_scripts = apply_filters( 'turnwell_footer_scripts', [] );
     </div>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script src="<?php echo esc_url( $theme_uri . '/js/main.js' ); ?>?v=1.3"></script>
-<?php
-foreach ( $footer_scripts as $script ) :
-    $script_src = strpos( $script, 'http' ) === 0 ? $script : $theme_uri . '/' . ltrim( $script, '/' );
-    ?>
-  <script src="<?php echo esc_url( $script_src ); ?>"></script>
-<?php endforeach; ?>
 <?php wp_footer(); ?>
 </body>
 </html>

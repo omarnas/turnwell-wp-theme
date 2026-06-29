@@ -189,15 +189,4 @@ get_header();
   </main>
 
 <?php
-if ( ! empty( $technology_areas ) ) {
-    add_filter(
-        'turnwell_footer_scripts',
-        static function ( $scripts ) {
-            $scripts[] = 'js/tech-journey.js?v=1.1';
-
-            return $scripts;
-        }
-    );
-}
-
 get_footer();

@@ -35,6 +35,7 @@ $about_video_mobile  = ! empty( $about['about_video'] ) ? $about['about_video'] 
           muted
           playsinline
           loop
+          preload="metadata"
         >
           <source src="<?php echo esc_url( $hero_video_mobile ); ?>" type="video/mp4" media="(max-width: 768px)">
           <source src="<?php echo esc_url( $hero_video_desktop ); ?>" type="video/mp4">
@@ -180,13 +181,12 @@ $about_video_mobile  = ! empty( $about['about_video'] ) ? $about['about_video'] 
             $name     = get_the_title( $member );
             $position = get_field( 'position', $member->ID );
             ?>
-          <article
+          <button
+            type="button"
             class="team-card team-card--interactive"
             data-aos="fade-up"
             data-aos-delay="<?php echo esc_attr( $index * 100 ); ?>"
             data-team-modal="<?php echo esc_attr( $slug ); ?>"
-            role="button"
-            tabindex="0"
             aria-haspopup="dialog"
             aria-controls="team-member-modal"
             aria-label="<?php echo esc_attr( sprintf( 'Read bio for %s', $name ) ); ?>"
@@ -212,7 +212,7 @@ $about_video_mobile  = ! empty( $about['about_video'] ) ? $about['about_video'] 
             <?php if ( ! empty( $position ) ) : ?>
             <p class="team-card-role"><?php echo esc_html( $position ); ?></p>
             <?php endif; ?>
-          </article>
+          </button>
           <?php endforeach; ?>
         </div>
 
@@ -402,14 +402,6 @@ if ( ! empty( $homepage_team ) ) {
         ]
     );
 
-    add_filter(
-        'turnwell_footer_scripts',
-        static function ( $scripts ) {
-            $scripts[] = 'js/team-modal.js?v=1.3';
-
-            return $scripts;
-        }
-    );
 }
 
 get_footer();

@@ -173,15 +173,4 @@ get_header();
   </main>
 
 <?php
-if ( ! empty( $phases ) ) {
-    add_filter(
-        'turnwell_footer_scripts',
-        static function ( $scripts ) {
-            $scripts[] = 'js/execution-story.js?v=1.5';
-
-            return $scripts;
-        }
-    );
-}
-
 get_footer();

@@ -223,13 +223,4 @@ get_header();
   </main>
 
 <?php
-add_filter(
-    'turnwell_footer_scripts',
-    static function ( $scripts ) {
-        $scripts[] = 'js/contact-page.js?v=1.1';
-
-        return $scripts;
-    }
-);
-
 get_footer();

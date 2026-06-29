@@ -112,14 +112,6 @@ if ( ! empty( $executive_members ) ) {
         ]
     );
 
-    add_filter(
-        'turnwell_footer_scripts',
-        static function ( $scripts ) {
-            $scripts[] = 'js/team-modal.js?v=1.3';
-
-            return $scripts;
-        }
-    );
 }
 
 get_footer();
