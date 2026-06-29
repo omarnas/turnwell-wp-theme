@@ -1,4 +1,56 @@
 (function () {
+  var responsiveVideos = document.querySelectorAll('.turnwell-responsive-video[data-video-desktop][data-video-mobile]');
+
+  if (responsiveVideos.length) {
+    var videoMq = window.matchMedia('(max-width: 768px)');
+
+    function responsiveVideoSrc(video) {
+      return videoMq.matches ? video.getAttribute('data-video-mobile') : video.getAttribute('data-video-desktop');
+    }
+
+    function playVideo(video) {
+      var playPromise = video.play();
+
+      if (playPromise && playPromise.catch) {
+        playPromise.catch(function () {});
+      }
+    }
+
+    function applyResponsiveVideo(video, force) {
+      var nextSrc = responsiveVideoSrc(video);
+
+      if (!nextSrc) {
+        return;
+      }
+
+      if (!force && video.currentSrc && video.currentSrc.indexOf(nextSrc) !== -1) {
+        return;
+      }
+
+      while (video.firstChild) {
+        video.removeChild(video.firstChild);
+      }
+
+      video.src = nextSrc;
+      video.load();
+      playVideo(video);
+    }
+
+    responsiveVideos.forEach(function (video) {
+      if (!video.currentSrc) {
+        applyResponsiveVideo(video, true);
+      }
+    });
+
+    if (videoMq.addEventListener) {
+      videoMq.addEventListener('change', function () {
+        responsiveVideos.forEach(function (video) {
+          applyResponsiveVideo(video, true);
+        });
+      });
+    }
+  }
+
   var toggle = document.querySelector('.nav-toggle');
   var nav = document.querySelector('.primary-nav');
   var header = document.querySelector('.site-header');

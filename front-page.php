@@ -15,8 +15,10 @@ $execution  = get_field( 'execution_model_section' );
 $partners   = get_field( 'our_partners' );
 $technology = get_field( 'technology_grid' );
 
-$hero_video  = ! empty( $hero['video'] ) ? $hero['video'] : $theme_uri . '/assets/Turnwell_Loop.mp4?2';
-$about_video = ! empty( $about['about_video'] ) ? $about['about_video'] : $theme_uri . '/assets/aboutvideo.mp4?2';
+$hero_video_desktop = ! empty( $hero['video'] ) ? $hero['video'] : $theme_uri . '/assets/Turnwell_Loop.mp4';
+$hero_video_mobile  = ! empty( $hero['video'] ) ? $hero['video'] : $theme_uri . '/assets/Turnwell_Loop_mobile.mp4';
+$about_video_desktop = ! empty( $about['about_video'] ) ? $about['about_video'] : $theme_uri . '/assets/aboutvideo.mp4';
+$about_video_mobile  = ! empty( $about['about_video'] ) ? $about['about_video'] : $theme_uri . '/assets/aboutvideo_mobile.mp4';
 ?>
 
   <main id="main">
@@ -26,13 +28,17 @@ $about_video = ! empty( $about['about_video'] ) ? $about['about_video'] : $theme
     <section class="hero hero--fullbleed"<?php echo ! empty( $hero['hero_heading'] ) ? ' aria-labelledby="hero-heading"' : ''; ?>>
       <div class="hero-bg" aria-hidden="true">
         <video
-          class="hero-bg-video"
-          src="<?php echo esc_url( $hero_video ); ?>"
+          class="hero-bg-video turnwell-responsive-video"
+          data-video-desktop="<?php echo esc_url( $hero_video_desktop ); ?>"
+          data-video-mobile="<?php echo esc_url( $hero_video_mobile ); ?>"
           autoplay
           muted
           playsinline
           loop
-        ></video>
+        >
+          <source src="<?php echo esc_url( $hero_video_mobile ); ?>" type="video/mp4" media="(max-width: 768px)">
+          <source src="<?php echo esc_url( $hero_video_desktop ); ?>" type="video/mp4">
+        </video>
         <div class="hero-bg-overlay"></div>
       </div>
 
@@ -115,14 +121,18 @@ $about_video = ! empty( $about['about_video'] ) ? $about['about_video'] : $theme
 
               <div class="home-about__media" data-aos="zoom-in" data-aos-delay="200">
                 <video
-                  class="home-about__video"
-                  src="<?php echo esc_url( $about_video ); ?>"
+                  class="home-about__video turnwell-responsive-video"
+                  data-video-desktop="<?php echo esc_url( $about_video_desktop ); ?>"
+                  data-video-mobile="<?php echo esc_url( $about_video_mobile ); ?>"
                   autoplay
                   muted
                   playsinline
                   loop
                   aria-hidden="true"
-                ></video>
+                >
+                  <source src="<?php echo esc_url( $about_video_mobile ); ?>" type="video/mp4" media="(max-width: 768px)">
+                  <source src="<?php echo esc_url( $about_video_desktop ); ?>" type="video/mp4">
+                </video>
               </div>
             </div>
             <?php endif; ?>

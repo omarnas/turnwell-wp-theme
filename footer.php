@@ -58,7 +58,7 @@ $footer_scripts = apply_filters( 'turnwell_footer_scripts', [] );
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script src="<?php echo esc_url( $theme_uri . '/js/main.js' ); ?>?v=1.2"></script>
+  <script src="<?php echo esc_url( $theme_uri . '/js/main.js' ); ?>?v=1.3"></script>
 <?php
 foreach ( $footer_scripts as $script ) :
     $script_src = strpos( $script, 'http' ) === 0 ? $script : $theme_uri . '/' . ltrim( $script, '/' );
