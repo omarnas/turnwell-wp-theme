@@ -49,7 +49,7 @@ if ( $executive ) :
               <?php
               echo get_the_post_thumbnail(
                   $member,
-                  'full',
+                  'turnwell-team-card',
                   [
                       'alt'     => '',
                       'width'   => 480,
@@ -94,7 +94,7 @@ else :
               <?php
               echo get_the_post_thumbnail(
                   $member,
-                  'full',
+                  'large',
                   [
                       'alt'     => '',
                       'width'   => 152,

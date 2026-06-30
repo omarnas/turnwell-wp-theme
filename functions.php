@@ -10,6 +10,14 @@ require get_template_directory() . '/inc/assets.php';
 add_theme_support( 'title-tag' );
 add_theme_support( 'post-thumbnails' );
 
+add_action(
+    'after_setup_theme',
+    function () {
+        add_image_size( 'turnwell-team-card', 500, 667, true );
+        add_image_size( 'turnwell-team-avatar', 400, 400, false );
+    }
+);
+
 register_nav_menus(
     [
         'primary' => 'Primary Menu',

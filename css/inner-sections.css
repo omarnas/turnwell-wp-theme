@@ -62,7 +62,7 @@
   .page-inner:not(.page-team) .page-hero__bg-image {
     object-position: top;
     box-sizing: border-box;
-    padding-top: 100px;
+    padding-top: 80px;
   }
 }
 

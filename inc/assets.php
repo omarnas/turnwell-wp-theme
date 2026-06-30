@@ -205,7 +205,13 @@ add_action( 'wp_enqueue_scripts', 'turnwell_enqueue_assets' );
  * @param string $media  Media attribute.
  */
 function turnwell_async_style_loader_tag( $html, $handle, $href, $media ) {
-	$async_handles = [ 'turnwell-animations', 'turnwell-team-modal', 'turnwell-aos' ];
+	$async_handles = [
+		'turnwell-responsive',
+		'turnwell-inner-responsive',
+		'turnwell-animations',
+		'turnwell-team-modal',
+		'turnwell-aos',
+	];
 
 	if ( ! in_array( $handle, $async_handles, true ) ) {
 		return $html;
@@ -246,11 +252,12 @@ function turnwell_defer_script_loader_tag( $tag, $handle, $src ) {
 add_filter( 'script_loader_tag', 'turnwell_defer_script_loader_tag', 10, 3 );
 
 /**
- * Preload the primary heading font for faster LCP text render.
+ * Preload heading and body fonts for faster LCP text render.
  */
 function turnwell_preload_fonts() {
-	$font_uri = get_template_directory_uri() . '/assets/fontsv2/Nekst-Bold.woff2';
+	$font_base = get_template_directory_uri() . '/assets/fontsv2/';
 
-	echo '<link rel="preload" href="' . esc_url( $font_uri ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
+	echo '<link rel="preload" href="' . esc_url( $font_base . 'Nekst-Regular.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
+	echo '<link rel="preload" href="' . esc_url( $font_base . 'Nekst-Bold.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
 }
 add_action( 'wp_head', 'turnwell_preload_fonts', 1 );

@@ -86,7 +86,7 @@ $about_video_mobile  = ! empty( $about['about_video'] ) ? $about['about_video'] 
           <p class="home-about__statement" data-aos="fade-up" data-aos-delay="60"><?php echo esc_html( $about['about_statement'] ); ?></p>
           <?php endif; ?>
 
-          <?php if ( ! empty( $about['about_kpis'] ) ) : ?>
+          <?php if ( ! empty( $about['about_kpis'] ) &&1==2 ) : ?>
           <ul class="home-about__kpis" aria-label="Program highlights" data-aos="fade-up" data-aos-delay="100">
             <?php foreach ( $about['about_kpis'] as $kpi ) : ?>
               <?php if ( empty( $kpi['kpi_value'] ) && empty( $kpi['kpi_label'] ) ) : ?>
@@ -129,6 +129,7 @@ $about_video_mobile  = ! empty( $about['about_video'] ) ? $about['about_video'] 
                   muted
                   playsinline
                   loop
+                  preload="none"
                   aria-hidden="true"
                 >
                   <source src="<?php echo esc_url( $about_video_mobile ); ?>" type="video/mp4" media="(max-width: 768px)">
@@ -195,12 +196,13 @@ $about_video_mobile  = ! empty( $about['about_video'] ) ? $about['about_video'] 
               <?php
               echo get_the_post_thumbnail(
                   $member,
-                  'full',
+                  'turnwell-team-card',
                   [
                       'alt'     => '',
                       'width'   => 400,
                       'height'  => 500,
                       'loading' => 'lazy',
+                      'sizes'   => '(max-width: 480px) 100vw, (max-width: 992px) 50vw, 25vw',
                   ]
               );
               ?>

@@ -48,7 +48,9 @@ add_filter(
     }
 );
 
+$top_banner     = get_field( 'top_banner' );
 $featured_image = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+$hero_image     = ! empty( $top_banner ) ? $top_banner : $featured_image;
 $date_label     = get_the_date( 'F d, Y' );
 $date_iso       = get_the_date( 'Y-m-d' );
 $news_page_url  = home_url( '/news/' );
@@ -75,9 +77,9 @@ get_header();
 
   <main id="main">
     <section class="page-hero page-hero--premium" aria-labelledby="article-hero-heading">
-      <?php if ( $featured_image ) : ?>
+      <?php if ( $hero_image ) : ?>
       <div class="page-hero__bg" aria-hidden="true">
-        <img src="<?php echo esc_url( $featured_image ); ?>" alt="" class="page-hero__bg-image">
+        <img src="<?php echo esc_url( $hero_image ); ?>" alt="" class="page-hero__bg-image">
         <div class="page-hero__overlay"></div>
       </div>
       <?php endif; ?>
