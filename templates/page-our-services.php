@@ -125,10 +125,13 @@ get_header();
         $block_title       = trim( (string) ( $block['title'] ?? '' ) );
         $block_description = trim( (string) ( $block['description'] ?? '' ) );
         $block_image       = trim( (string) ( $block['image'] ?? '' ) );
+        $block_stats_label = trim( (string) ( $block['stats_label'] ?? '' ) );
+        $block_stats_value = trim( (string) ( $block['stats_value'] ?? '' ) );
         $is_procurement    = $index > 0;
         $heading_id        = $is_procurement ? 'procurement-heading' : 'hse-heading';
+        $has_block_stats   = $block_stats_label !== '' || $block_stats_value !== '';
 
-        if ( $block_title === '' && $block_description === '' && $block_image === '' ) {
+        if ( $block_title === '' && $block_description === '' && $block_image === '' && ! $has_block_stats ) {
             continue;
         }
         ?>
@@ -192,6 +195,16 @@ get_header();
             <?php if ( $block_description !== '' ) : ?>
             <div class="prose type-body services-hse__prose">
               <p><?php echo esc_html( $block_description ); ?></p>
+            </div>
+            <?php endif; ?>
+            <?php if ( $has_block_stats ) : ?>
+            <div class="services-hse__stat">
+              <?php if ( $block_stats_value !== '' ) : ?>
+              <p class="services-hse__stat-value"><?php echo esc_html( $block_stats_value ); ?></p>
+              <?php endif; ?>
+              <?php if ( $block_stats_label !== '' ) : ?>
+              <p class="services-hse__stat-label"><?php echo esc_html( $block_stats_label ); ?></p>
+              <?php endif; ?>
             </div>
             <?php endif; ?>
           </div>

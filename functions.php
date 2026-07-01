@@ -317,3 +317,31 @@ function turnwell_svg_admin_styles() {
     <?php
 }
 add_action( 'admin_head', 'turnwell_svg_admin_styles' );
+
+/**
+ * Resolve the public link for a news post.
+ *
+ * @param int|WP_Post $post Post object or ID.
+ * @return array{url: string, external: bool}
+ */
+function turnwell_resolve_news_post_link( $post ) {
+    $post_id   = $post instanceof WP_Post ? $post->ID : (int) $post;
+    $permalink = get_permalink( $post_id );
+    $external  = trim( (string) get_field( 'external_url', $post_id ) );
+
+    if ( $external !== '' ) {
+        $external = esc_url( $external );
+
+        if ( $external !== '' ) {
+            return [
+                'url'      => $external,
+                'external' => true,
+            ];
+        }
+    }
+
+    return [
+        'url'      => $permalink ? $permalink : '',
+        'external' => false,
+    ];
+}

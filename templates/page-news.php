@@ -59,15 +59,24 @@ get_header();
       <div class="container">
         <?php if ( $featured instanceof WP_Post ) : ?>
           <?php
-          $featured_permalink = get_permalink( $featured );
-          $featured_image     = get_the_post_thumbnail_url( $featured, 'full' );
-          $featured_date      = get_the_date( 'F d, Y', $featured );
-          $featured_date_iso  = get_the_date( 'Y-m-d', $featured );
-          $featured_excerpt   = get_the_excerpt( $featured );
+          $featured_link    = turnwell_resolve_news_post_link( $featured );
+          $featured_image   = get_the_post_thumbnail_url( $featured, 'full' );
+          $featured_date    = get_the_date( 'F d, Y', $featured );
+          $featured_date_iso = get_the_date( 'Y-m-d', $featured );
+          $featured_excerpt = get_the_excerpt( $featured );
           ?>
         <article class="news-featured" aria-labelledby="news-featured-title" data-aos="fade-up">
           <div class="news-featured__grid">
-            <a href="<?php echo esc_url( $featured_permalink ); ?>" class="news-featured__media" tabindex="-1" aria-hidden="true">
+            <a
+              href="<?php echo esc_url( $featured_link['url'] ); ?>"
+              class="news-featured__media"
+              tabindex="-1"
+              aria-hidden="true"
+              <?php if ( $featured_link['external'] ) : ?>
+              target="_blank"
+              rel="noopener noreferrer"
+              <?php endif; ?>
+            >
               <?php if ( $featured_image ) : ?>
               <div class="image-block image-block--ratio-16-9">
                 <img
@@ -85,13 +94,26 @@ get_header();
               <time class="news-featured__date" datetime="<?php echo esc_attr( $featured_date_iso ); ?>"><?php echo esc_html( $featured_date ); ?></time>
               <?php endif; ?>
               <h2 id="news-featured-title" class="news-featured__title">
-                <a href="<?php echo esc_url( $featured_permalink ); ?>"><?php echo esc_html( get_the_title( $featured ) ); ?></a>
+                <a
+                  href="<?php echo esc_url( $featured_link['url'] ); ?>"
+                  <?php if ( $featured_link['external'] ) : ?>
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  <?php endif; ?>
+                ><?php echo esc_html( get_the_title( $featured ) ); ?></a>
               </h2>
               <?php if ( $featured_excerpt ) : ?>
               <p class="news-featured__excerpt"><?php echo esc_html( $featured_excerpt ); ?></p>
               <?php endif; ?>
               <p class="news-featured__action">
-                <a href="<?php echo esc_url( $featured_permalink ); ?>" class="btn btn--pill">Read More</a>
+                <a
+                  href="<?php echo esc_url( $featured_link['url'] ); ?>"
+                  class="btn btn--pill"
+                  <?php if ( $featured_link['external'] ) : ?>
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  <?php endif; ?>
+                >Read More</a>
               </p>
             </div>
           </div>

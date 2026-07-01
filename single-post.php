@@ -11,6 +11,15 @@ if ( ! have_posts() ) {
 
 the_post();
 
+if ( has_category( 'news' ) ) {
+    $news_link = turnwell_resolve_news_post_link( get_the_ID() );
+
+    if ( $news_link['external'] && $news_link['url'] !== '' ) {
+        wp_redirect( $news_link['url'], 302 );
+        exit;
+    }
+}
+
 if ( ! has_category( 'news' ) ) {
     add_filter(
         'turnwell_body_class',

@@ -50,19 +50,6 @@ if ( ! empty( $address_lines ) ) {
     );
 }
 
-$inquiry_types = [];
-
-if ( ! empty( $quick_cards ) ) {
-    foreach ( $quick_cards as $card ) {
-        $inquiry_value = trim( (string) ( $card['inquiry'] ?? '' ) );
-        $inquiry_label = trim( (string) ( $card['title'] ?? '' ) );
-
-        if ( $inquiry_value !== '' && $inquiry_label !== '' ) {
-            $inquiry_types[ $inquiry_value ] = $inquiry_label;
-        }
-    }
-}
-
 get_header();
 ?>
 
@@ -211,7 +198,7 @@ get_header();
             <div class="contact-experience__form" id="contact-form">
               <?php
               if ( function_exists( 'turnwell_contact_form' ) ) {
-                  turnwell_contact_form( $inquiry_types );
+                  turnwell_contact_form();
               }
               ?>
             </div>
