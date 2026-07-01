@@ -98,6 +98,7 @@ get_header();
                 $phase_content   = get_post_field( 'post_content', $phase_id );
                 $phase_technology = (string) get_field( 'technology', $phase_id );
                 $phase_metrics   = get_field( 'metrics', $phase_id );
+                $phase_technology_label   = get_field( 'technology_section_label', $phase_id );
                 ?>
               <article
                 class="execution-story__phase<?php echo 0 === $index ? ' is-active' : ''; ?>"
@@ -147,7 +148,7 @@ get_header();
                   <?php endif; ?>
                   <?php if ( $phase_technology !== '' ) : ?>
                   <div class="execution-story__tech-wrap">
-                  <p class="execution-story__phase-tech"><span class="execution-story__phase-tech-label">Technology:</span> <?php echo esc_html( $phase_technology ); ?></p>
+                  <p class="execution-story__phase-tech"><span class="execution-story__phase-tech-label"><?php echo esc_html( $phase_technology_label ); ?>:</span> <?php echo esc_html( $phase_technology ); ?></p>
                   </div>
                   <?php endif; ?>
                 </div>

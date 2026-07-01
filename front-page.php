@@ -17,8 +17,8 @@ $technology = get_field( 'technology_grid' );
 
 $hero_video_desktop = ! empty( $hero['video'] ) ? $hero['video'] : $theme_uri . '/assets/Turnwell_Loop.mp4';
 $hero_video_mobile  = ! empty( $hero['video'] ) ? $hero['video'] : $theme_uri . '/assets/Turnwell_Loop_mobile.mp4';
-$about_video_desktop = ! empty( $about['about_video'] ) ? $about['about_video'] : $theme_uri . '/assets/aboutvideo.mp4';
-$about_video_mobile  = ! empty( $about['about_video'] ) ? $about['about_video'] : $theme_uri . '/assets/aboutvideo_mobile.mp4';
+$about_video_desktop = ! empty( $about['about_video'] ) ? $about['about_video'] : $theme_uri . '/assets/aboutvideo_3.mp4';
+$about_video_mobile  = ! empty( $about['about_video'] ) ? $about['about_video'] : $theme_uri . '/assets/aboutvideo_3.mp4';
 ?>
 
   <main id="main">
@@ -226,9 +226,9 @@ $about_video_mobile  = ! empty( $about['about_video'] ) ? $about['about_video'] 
     <?php endif; ?>
 
     <?php if ( ! empty( $execution ) ) : ?>
-    <!-- 4. Operations tile grid -->
+    <!-- 4. Operations tile grid was  container-wide-->
     <section class="execution section section--grey" id="execution-model"<?php echo ! empty( $execution['execution_heading'] ) ? ' aria-labelledby="execution-heading"' : ''; ?>>
-      <div class="container container-wide">
+      <div class="container">
         <?php if ( ! empty( $execution['execution_heading'] ) ) : ?>
         <header class="execution-header" data-aos="fade-up">
           <h2 id="execution-heading" class="section-title"><?php echo esc_html( $execution['execution_heading'] ); ?></h2>
