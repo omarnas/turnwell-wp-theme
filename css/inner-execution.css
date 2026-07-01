@@ -12,20 +12,21 @@
   margin-bottom: 0;
 }
 
-.page-execution .execution-ops__intro .section-title {
+.page-execution .execution-ops__intro-copy .section-title {
   margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
 }
 
-.page-execution .execution-ops__intro .section-lead {
+.page-execution .execution-ops__intro-copy .section-lead {
   max-width: 47.5rem;
-  margin-top: 0;
-  margin-bottom: clamp(2rem, 4vw, 2.75rem);
+  margin: 0;
   font-size: 1.0625rem;
   line-height: 1.72;
 }
 
 .page-execution .execution-story__subtitle {
-  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+  margin-top: clamp(1.75rem, 3.5vw, 2.25rem);
+  padding-top: 0;
+  border-top: none;
   font-size: 0.75rem;
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.12em;
@@ -268,6 +269,47 @@
   border-top: 1px solid rgba(217, 219, 227, 0.9);
   font-size: 0.9375rem;
   line-height: 1.7;
+  color: var(--color-secondary-blue);
+}
+
+.page-execution .execution-deployment-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  list-style: none;
+  margin: clamp(1.5rem, 3vw, 2rem) 0 0;
+  padding: 0 0 clamp(1.75rem, 3.5vw, 2.25rem);
+  border-bottom: 1px solid rgba(217, 219, 227, 0.55);
+}
+
+.page-execution .execution-deployment-stats__item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+  margin: 0;
+  padding: 0;
+}
+
+.page-execution .execution-deployment-stats__item + .execution-deployment-stats__item {
+  padding-left: clamp(1.5rem, 3vw, 2.5rem);
+  border-left: 1px solid rgba(217, 219, 227, 0.85);
+}
+
+.page-execution .execution-deployment-stats__value {
+  font-size: clamp(1.75rem, 2.8vw, 2.25rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-navy);
+}
+
+.page-execution .execution-deployment-stats__label {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.45;
   color: var(--color-secondary-blue);
 }
 
@@ -739,6 +781,20 @@
 }
 
 @media (max-width: 768px) {
+  .page-execution .execution-deployment-stats {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.875rem;
+  }
+
+  .page-execution .execution-deployment-stats__item + .execution-deployment-stats__item {
+    padding-left: 0;
+    border-left: none;
+    padding-top: 0.875rem;
+    border-top: 1px solid rgba(217, 219, 227, 0.85);
+    width: 100%;
+  }
+
   .page-execution .execution-tabs__panel-name,
   .page-services .execution-tabs__panel-name {
     font-size: 1.5rem;

@@ -52,12 +52,24 @@ get_header();
       <div class="container">
         <?php if ( ! empty( $intro_title ) || ! empty( $intro_lead ) || ! empty( $intro_subtitle ) ) : ?>
         <header class="execution-ops__intro inner-section-header" data-aos="fade-up">
-          <?php if ( ! empty( $intro_title ) ) : ?>
-          <h2 id="execution-page-title" class="section-title type-section-title"><?php echo esc_html( $intro_title ); ?></h2>
-          <?php endif; ?>
-          <?php if ( ! empty( $intro_lead ) ) : ?>
-          <p class="section-lead"><?php echo esc_html( $intro_lead ); ?></p>
-          <?php endif; ?>
+          <div class="execution-ops__intro-copy">
+            <?php if ( ! empty( $intro_title ) ) : ?>
+            <h2 id="execution-page-title" class="section-title type-section-title"><?php echo esc_html( $intro_title ); ?></h2>
+            <?php endif; ?>
+            <?php if ( ! empty( $intro_lead ) ) : ?>
+            <p class="section-lead"><?php echo esc_html( $intro_lead ); ?></p>
+            <?php endif; ?>
+          </div>
+          <ul class="execution-deployment-stats" aria-label="Deployment summary">
+            <li class="execution-deployment-stats__item">
+              <span class="execution-deployment-stats__value" data-count-target="9">9</span>
+              <span class="execution-deployment-stats__label">Rigs deployed</span>
+            </li>
+            <li class="execution-deployment-stats__item">
+              <span class="execution-deployment-stats__value" data-count-target="2">2</span>
+              <span class="execution-deployment-stats__label">Frac fleets</span>
+            </li>
+          </ul>
           <?php if ( ! empty( $intro_subtitle ) ) : ?>
           <p class="execution-story__subtitle"><?php echo esc_html( $intro_subtitle ); ?></p>
           <?php endif; ?>
