@@ -373,8 +373,23 @@ $about_video_mobile  = ! empty( $about['about_video'] ) ? $about['about_video'] 
               <?php if ( ! empty( $card['card_title'] ) ) : ?>
               <h3 class="tech-card-title"><?php echo esc_html( $card['card_title'] ); ?></h3>
               <?php endif; ?>
-              <?php if ( ! empty( $card['card_product'] ) ) : ?>
-              <p class="tech-card-product"><?php echo esc_html( $card['card_product'] ); ?></p>
+              <?php
+              $card_products = preg_split( '/\r\n|\r|\n/', (string) $card['card_product'] );
+              $card_products = array_values(
+                  array_filter(
+                      array_map( 'trim', $card_products ),
+                      static function ( $product ) {
+                          return $product !== '';
+                      }
+                  )
+              );
+              ?>
+              <?php if ( ! empty( $card_products ) ) : ?>
+              <ul class="tech-card-products">
+                <?php foreach ( $card_products as $product ) : ?>
+                <li class="tech-card-product"><?php echo esc_html( $product ); ?></li>
+                <?php endforeach; ?>
+              </ul>
               <?php endif; ?>
             </div>
             <?php endif; ?>

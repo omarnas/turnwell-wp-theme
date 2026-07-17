@@ -855,7 +855,17 @@ button.team-card {
   color: var(--color-navy);
 }
 
+.tech-card-products {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 .tech-card-product {
+  margin: 0;
   font-size: 0.8125rem;
   font-weight: var(--font-weight-bold);
   color: var(--color-electric-blue);

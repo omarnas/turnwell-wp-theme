@@ -741,7 +741,7 @@
                             "label": "Card Product",
                             "name": "card_product",
                             "aria-label": "",
-                            "type": "text",
+                            "type": "textarea",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -753,9 +753,9 @@
                             "default_value": "",
                             "maxlength": "",
                             "allow_in_bindings": 0,
+                            "rows": "",
                             "placeholder": "",
-                            "prepend": "",
-                            "append": "",
+                            "new_lines": "",
                             "parent_repeater": "field_6a3adcfeca0ca"
                         }
                     ]
@@ -822,5 +822,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1782242930
+    "modified": 1784308295
 }
