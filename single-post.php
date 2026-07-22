@@ -63,23 +63,30 @@ $hero_image     = ! empty( $top_banner ) ? $top_banner : $featured_image;
 $date_label     = get_the_date( 'F d, Y' );
 $date_iso       = get_the_date( 'Y-m-d' );
 $news_page_url  = home_url( '/news/' );
+$hide_sidebar   = (bool) get_field( 'hide_sidebar' );
 
-$related_query = new WP_Query(
-    [
-        'post_type'              => 'post',
-        'post_status'            => 'publish',
-        'posts_per_page'         => 3,
-        'category_name'          => 'news',
-        'post__not_in'           => [ get_the_ID() ],
-        'orderby'                => 'date',
-        'order'                  => 'DESC',
-        'no_found_rows'          => true,
-        'update_post_meta_cache' => false,
-        'update_post_term_cache' => false,
-    ]
-);
+$related_posts = [];
 
-$related_posts = $related_query->posts;
+if ( ! $hide_sidebar ) {
+    $related_query = new WP_Query(
+        [
+            'post_type'              => 'post',
+            'post_status'            => 'publish',
+            'posts_per_page'         => 3,
+            'category_name'          => 'news',
+            'post__not_in'           => [ get_the_ID() ],
+            'orderby'                => 'date',
+            'order'                  => 'DESC',
+            'no_found_rows'          => true,
+            'update_post_meta_cache' => false,
+            'update_post_term_cache' => false,
+        ]
+    );
+
+    $related_posts = $related_query->posts;
+}
+
+$show_sidebar = ! $hide_sidebar && ! empty( $related_posts );
 
 get_header();
 ?>
@@ -105,7 +112,7 @@ get_header();
     <section class="news-article section" aria-labelledby="article-content-heading">
       <div class="container">
         <h2 id="article-content-heading" class="visually-hidden">Article</h2>
-        <div class="news-article__layout">
+        <div class="news-article__layout<?php echo $show_sidebar ? '' : ' news-article__layout--full'; ?>">
           <div class="news-article__main">
             <?php if ( $featured_image ) : ?>
             <div class="news-article__featured-image" data-aos="fade-up">
@@ -128,7 +135,7 @@ get_header();
             </p>
           </div>
 
-          <?php if ( ! empty( $related_posts ) ) : ?>
+          <?php if ( $show_sidebar ) : ?>
           <aside class="news-article__sidebar" aria-labelledby="news-related-heading" data-aos="fade-up" data-aos-delay="120">
             <h2 id="news-related-heading" class="news-article__sidebar-title">News & Insights</h2>
             <div class="news-article__related-list">

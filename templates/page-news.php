@@ -59,11 +59,12 @@ get_header();
       <div class="container">
         <?php if ( $featured instanceof WP_Post ) : ?>
           <?php
-          $featured_link    = turnwell_resolve_news_post_link( $featured );
-          $featured_image   = get_the_post_thumbnail_url( $featured, 'full' );
-          $featured_date    = get_the_date( 'F d, Y', $featured );
+          $featured_link     = turnwell_resolve_news_post_link( $featured );
+          $featured_image    = get_the_post_thumbnail_url( $featured, 'full' );
+          $featured_date     = get_the_date( 'F d, Y', $featured );
           $featured_date_iso = get_the_date( 'Y-m-d', $featured );
-          $featured_excerpt = get_the_excerpt( $featured );
+          $featured_short    = trim( (string) get_field( 'short_description', $featured->ID ) );
+          $featured_excerpt  = $featured_short !== '' ? $featured_short : get_the_excerpt( $featured );
           ?>
         <article class="news-featured" aria-labelledby="news-featured-title" data-aos="fade-up">
           <div class="news-featured__grid">
